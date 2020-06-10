@@ -93,6 +93,7 @@ module Kernel
   def ohai(title, *sput)
     puts ohai_title(title)
     puts sput
+    $stdout.flush
   end
 
   def odebug(title, *sput)
@@ -105,6 +106,7 @@ module Kernel
   def oh1(title, options = {})
     title = Tty.truncate(title) if $stdout.tty? && !Homebrew.args.verbose? && options.fetch(:truncate, :auto) == :auto
     puts Formatter.headline(title, color: :green)
+    $stdout.flush
   end
 
   # Print a warning (do this rarely)
